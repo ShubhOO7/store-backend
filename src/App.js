@@ -1,24 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Home from './components/Home';
+import AddBook from './components/AddBook';
+import Books from './components/Book/BookList';
+import About from './components/About';
+import { Routes, Route } from "react-router-dom";
+import BookDetails from './components/Book/Bookdetails';
+import ProtectedRoutes from './ProtectedRoutes';
+import '@fontsource/roboto/400.css';
+
+
 
 function App() {
+
+    const [isAutheticated, setisAutheticated] = useState(false);
+
+    function login(valid) {
+        // console.log(valid);
+        setisAutheticated(valid);
+        console.log("loggedInUser:" + isAutheticated)
+    }
+
+    function logout(valid) {
+        setisAutheticated(valid);
+        console.log("loggedInUser:" + isAutheticated)
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <React.Fragment>
+          <header>
+              <Header />
+          </header>
+          <main>
+              <Routes>
+                  <Route path='/' element={<Home login={login} />} exact />
+
+                  <Route element={<ProtectedRoutes loggedInUser={isAutheticated} />} >
+                      <Route path='/add' element={<AddBook />} exact />
+                      <Route path='/books' element={<Books />} exact />
+                      <Route path='/about' element={<About logout={logout} />} exact />
+                      <Route path='/books/:id' element={<BookDetails />} exact />
+                  </Route>
+              </Routes>
+          </main>
+      </React.Fragment >
   );
 }
 
