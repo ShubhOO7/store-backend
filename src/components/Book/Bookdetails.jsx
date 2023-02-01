@@ -25,7 +25,7 @@ function Bookdetails() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(input, checked);
-        axios.put(`http://localhost:8000/books/${id}`, {
+        axios.put(`https://book-stores-api.onrender.com/books/${id}`, {
             name: String(input.name),
             author: String(input.author),
             description: String(input.description),
@@ -38,7 +38,7 @@ function Bookdetails() {
     const id = useParams().id;
     // console.log(id);
     useEffect(() => {
-        axios.get(`http://localhost:8000/books/${id}`)
+        axios.get(`https://book-stores-api.onrender.com/books/${id}`)
             .then((res) => res.data)
             .then((data) => setInput(data.book))
     }, [id]);

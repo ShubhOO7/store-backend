@@ -26,13 +26,13 @@ const LoginForm = ({ login }) => {
             alert("Fields are required")
             return;
         }
-        Axios.get(`http://localhost:8000/${email}`)
+        Axios.get(`https://book-stores-api.onrender.com/${email}`)
             .then(response => {
                 // console.log(response);
                 if (response.data.user.length > 0) {
                     setStatus("User Already Present with that Name : " + email);
                 } else {
-                    Axios.post("http://localhost:8000/",
+                    Axios.post("https://book-stores-api.onrender.com",
                         {
                             username: email,
                             password: hashedPassword
@@ -51,7 +51,7 @@ const LoginForm = ({ login }) => {
             alert("All Fields are required");
             return;
         } else {
-            Axios.get(`http://localhost:8000/${email}`,
+            Axios.get(`https://book-stores-api.onrender.com/${email}`,
                 {
                     username: email,
                     password: hashedPassword
@@ -96,7 +96,7 @@ const LoginForm = ({ login }) => {
     }, [])
     const onSuccess = e => {
         alert("User signed in");
-        Axios.post("http://localhost:8000/",
+        Axios.post("https://book-stores-api.onrender.com",
             {
                 username: e.profileObj.name,
                 password: e.profileObj.name
