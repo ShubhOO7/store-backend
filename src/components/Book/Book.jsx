@@ -10,7 +10,7 @@ function Book(books) {
     // console.log(_id);
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.delete(`https://book-stores-api.onrender.com/books/${_id}`).then(res => res.data)
+        axios.delete(`https://wide-eyed-goat-bedclothes.cyclic.app/books/${_id}`).then(res => res.data)
             .then(window.location.reload());
     }
     return (

@@ -4,7 +4,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const URL = "https://book-stores-api.onrender.com/books";
+const URL = "https://wide-eyed-goat-bedclothes.cyclic.app/books";
 
 function AddBook() {
     const navigate = useNavigate();

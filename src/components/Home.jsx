@@ -26,13 +26,13 @@ const LoginForm = ({ login }) => {
             alert("Fields are required")
             return;
         }
-        Axios.get(`https://book-stores-api.onrender.com/${email}`)
+        Axios.get(`https://wide-eyed-goat-bedclothes.cyclic.app/${email}`)
             .then(response => {
                 // console.log(response);
                 if (response.data.user.length > 0) {
                     setStatus("User Already Present with that Name : " + email);
                 } else {
-                    Axios.post("https://book-stores-api.onrender.com",
+                    Axios.post("https://wide-eyed-goat-bedclothes.cyclic.app/",
                         {
                             username: email,
                             password: hashedPassword
@@ -51,7 +51,7 @@ const LoginForm = ({ login }) => {
             alert("All Fields are required");
             return;
         } else {
-            Axios.get(`https://book-stores-api.onrender.com/${email}`,
+            Axios.get(`https://wide-eyed-goat-bedclothes.cyclic.app/${email}`,
                 {
                     username: email,
                     password: hashedPassword
@@ -96,7 +96,7 @@ const LoginForm = ({ login }) => {
     }, [])
     const onSuccess = e => {
         alert("User signed in");
-        Axios.post("https://book-stores-api.onrender.com",
+        Axios.post("https://wide-eyed-goat-bedclothes.cyclic.app/",
             {
                 username: e.profileObj.name,
                 password: e.profileObj.name
