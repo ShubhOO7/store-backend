@@ -5,7 +5,7 @@ import Home from './components/Home';
 import AddBook from './components/AddBook';
 import Books from './components/Book/BookList';
 import About from './components/About';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import BookDetails from './components/Book/Bookdetails';
 import ProtectedRoutes from './ProtectedRoutes';
 import '@fontsource/roboto/400.css';
@@ -35,6 +35,7 @@ function App() {
           <main>
               <Routes>
                   <Route path='/' element={<Home login={login} />} exact />
+                  <Route path="*" element={<Navigate to="/" />} />
 
                   <Route element={<ProtectedRoutes loggedInUser={isAutheticated} />} >
                       <Route path='/add' element={<AddBook />} exact />
